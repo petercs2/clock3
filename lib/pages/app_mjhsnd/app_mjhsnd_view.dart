@@ -11,8 +11,8 @@ class AppMjhsndView extends GetView<PageLogic> {
     return Scaffold(
       body: Center(
         child: Obx(
-          () => controller.hill.value
-              ? const CircularProgressIndicator(color: Colors.deepPurpleAccent)
+          () => controller.rath.value
+              ? const CircularProgressIndicator(color: Colors.blueAccent)
               : buildError(),
         ),
       ),
@@ -26,7 +26,7 @@ class AppMjhsndView extends GetView<PageLogic> {
         children: [
           IconButton(
             onPressed: () {
-              controller.yhejma();
+              controller.buql();
             },
             icon: const Icon(
               Icons.restart_alt,

@@ -1,3 +1,5 @@
+import 'package:color_clock/pages/app_mjhsnd/app_mjhsnd_binding.dart';
+import 'package:color_clock/pages/app_mjhsnd/app_mjhsnd_view.dart';
 import 'package:color_clock/pages/app_setting/app_setting_binding.dart';
 import 'package:color_clock/pages/app_setting/app_setting_view.dart';
 import 'package:color_clock/pages/clock_main/clock_main_binding.dart';
@@ -5,6 +7,8 @@ import 'package:color_clock/pages/clock_main/clock_main_view.dart';
 import 'package:color_clock/pages/clock_text_color_setting/clock_text_color_setting_binding.dart';
 import 'package:color_clock/pages/clock_text_color_setting/clock_text_color_setting_view.dart';
 import 'package:color_clock/pages/time_out/time_out_binding.dart';
+import 'package:color_clock/pages/time_out/time_out_logic.dart';
+import 'package:color_clock/pages/time_out/time_out_reload.dart';
 import 'package:color_clock/pages/time_out/time_out_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +35,7 @@ List<Color> colorList = const [
 const String timeFamily = 'Ticking Timebomb BB';
 
 void main() async {
+  Get.lazyPut(() => TimeOutLogic());
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: Sun,
-      initialRoute: '/ClockMainPage',
+      initialRoute: '/ClockTabPage',
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: primaryColor,
@@ -105,8 +110,10 @@ class MyApp extends StatelessWidget {
   }
 }
 List<GetPage<dynamic>> Sun = [
+  GetPage(name: '/ClockTabPage', page: () => const AppMjhsndView(), binding: AppMjhsndBinding()),
   GetPage(name: '/ClockMainPage', page: () => const ClockMainPage(), binding: ClockMainBinding()),
   GetPage(name: '/ClockTextColorSettingPage', page: () => ClockTextColorSettingPage(), binding: ClockTextColorSettingBinding()),
   GetPage(name: '/AppSettingPage', page: () => const AppSettingPage(), binding: AppSettingBinding()),
+  GetPage(name: '/Outreload', page: () => const TimeOutReload()),
   GetPage(name: '/Apptimeout', page: () => const TimeOutView(), binding: TimeOutBinding()),
 ];

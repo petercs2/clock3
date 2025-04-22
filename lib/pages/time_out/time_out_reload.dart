@@ -24,7 +24,7 @@ class TimeOutReload extends GetView<PageLogic>{
         body: SafeArea(
           child: InAppWebView(
             initialUrlRequest: URLRequest(
-              url: WebUri.uri(Uri.parse(controller.evatwsgu.value)),
+              url: WebUri.uri(Uri.parse(controller.ufpdrn.value)),
             ),
             onWebViewCreated: (c) {
               controller.webViewController = c;
